@@ -2,7 +2,7 @@ import React from 'react'
 import { CheckCircle2 } from "lucide-react";
 const Pricing = () => {
   return (
-    <div className='lg:mt-10 mt-6'>
+    <div className='mt-10 pt-6'>
       <div>
         <div className=' flex justify-center  items-center lg:pt-14 pb-4 text-3xl md:text-4xl lg:text-5xl'>
           <h1>Pricing</h1>
