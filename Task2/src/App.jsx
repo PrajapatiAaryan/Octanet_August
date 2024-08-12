@@ -8,7 +8,7 @@ function App() {
 
   return (
     <>
-    <div className="bg-hero-pattern2 min-h-screen bg-cover">
+    <div className=" min-h-screen bg-cover">
       <Navbar/>
       <Todotask/>
     </div>
