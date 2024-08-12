@@ -85,7 +85,7 @@ const Todotask = () => {
               <input type="checkbox" className="text-5xl" checked ={completed} onChange={()=>togglechange()} />
               <h1>Show all</h1>
             </div>}
-            {todos.map((item) => (
+            {todos?.map((item) => (
                 <div key={item.id} className=" w-[90vw] lg:w-[45vw] ">
                   <div className="flex justify-between px-2 py-2 items-center border-b">
                     <div className="flex gap-4 text-xl">
