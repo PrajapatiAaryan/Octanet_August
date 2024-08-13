@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
 const Todotask = () => {
-  const [todos, settodos] = useState([]);
-  const [task, settask] = useState([]);
+ const [todos, settodos] = useState([
+    { id: 1, todo: "this is demo todo", iscompleted: false },
+  ]);
+  const [task, settask] = useState("");
   const [completed, setcompleted] = useState(true)
 //add function
   const handleadd = () => {
@@ -51,10 +53,17 @@ const Todotask = () => {
      settodos(updatedtodo)
    }
      
-  useEffect(() => {
+   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
-    settodos(JSON.parse(todolist));
-    console.log("1" ,JSON.parse(todolist))
+    let newtodolist = JSON.parse(todolist)
+    if (newtodolist.length===0) {
+      console.log("hekki i am render if" , todos  , JSON.parse(todolist).length);
+    }
+    else {
+      console.log("hekki i am render else" , todos  , JSON.parse(todolist).length);
+      settodos(JSON.parse(todolist))
+    }
+
   }, []);
 
   return (
