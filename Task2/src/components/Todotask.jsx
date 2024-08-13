@@ -12,6 +12,7 @@ const Todotask = () => {
       { id: Date.now(), todo: task, iscompleted: false },
     ];
     settodos(updatedtodo);
+    console.log("1" ,updatedtodo)
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
     settask("");
   };
@@ -21,6 +22,7 @@ const Todotask = () => {
       item.id == id ? { ...item, iscompleted: !item.iscompleted } : item
     );
     settodos(updatedtodo);
+    console.log("1" ,updatedtodo)
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
   };
 
@@ -30,12 +32,14 @@ const Todotask = () => {
     let updatedtodo = todos.filter((item) => item.id != id);
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
     settodos(updatedtodo);
+    console.log("1" ,updatedtodo)
   };
 //delete function  
   const handledelete = (id) => {
     let updatedtodo = todos.filter((item) => item.id != id);
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
     settodos(updatedtodo);
+    console.log("1" ,updatedtodo)
   };
 //show all function
    const togglechange = () => {
@@ -43,12 +47,14 @@ const Todotask = () => {
      let todolist = localStorage.getItem("todolist");
      let newtodos = JSON.parse(todolist)
      let updatedtodo = completed?newtodos.filter((item)=>item.iscompleted==false):newtodos
+     console.log("1" ,updatedtodo)
      settodos(updatedtodo)
    }
      
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
     settodos(JSON.parse(todolist));
+    console.log("1" ,JSON.parse(todolist))
   }, []);
 
   return (
