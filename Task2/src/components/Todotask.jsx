@@ -6,7 +6,6 @@ const Todotask = () => {
     { id: Date.now(), todo: "this is a demo todo task", iscompleted: false },
   ]);
   const [task, settask] = useState("");
-  const [completed, setcompleted] = useState(true);
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
     // let newtodolist = JSON.parse(todolist);
@@ -49,15 +48,7 @@ const Todotask = () => {
     settodos(updatedtodo);
   };
   //show all function
-  const togglechange = () => {
-    setcompleted(!completed);
-    let todolist = localStorage.getItem("todolist");
-    let newtodos = JSON.parse(todolist);
-    let updatedtodo = completed
-      ? newtodos.filter((item) => item.iscompleted == false)
-      : newtodos;
-    settodos(updatedtodo);
-  };
+
 
   return (
     <>
@@ -89,23 +80,7 @@ const Todotask = () => {
             <h1 className="text-xl px-3 py-2 flex justify-center items-center font-bold">
               Here Your All Task List
             </h1>
-            {todos?.length == 0 ? (
-              <>
-                <h1 className="text-lg px-3 py-2 flex justify-center items-center">
-                  NO Task is pending
-                </h1>
-              </>
-            ) : (
-              <div className="flex justify-start border-b border-black items-center text-xl gap-4 px-2 py-2">
-                <input
-                  type="checkbox"
-                  className="text-5xl"
-                  checked={completed}
-                  onChange={() => togglechange()}
-                />
-                <h1>Show all</h1>
-              </div>
-            )}
+           
             {todos?.map((item) => (
               <div key={item.id} className=" w-[90vw] lg:w-[45vw] ">
                 <div className="flex justify-between px-2 py-2 items-center border-b">
