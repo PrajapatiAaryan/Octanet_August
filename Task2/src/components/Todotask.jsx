@@ -7,7 +7,7 @@ const Todotask = () => {
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
     // let newtodolist = JSON.parse(todolist);
-    console.log(JSON.parse(todolist) ,JSON.parse(todolist).length )
+    console.log(JSON.parse(todolist))
     let newtodolist = JSON.parse(todolist) ;
     console.log(newtodolist)
     
