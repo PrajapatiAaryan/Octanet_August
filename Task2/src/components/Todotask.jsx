@@ -4,10 +4,10 @@ import Navbar from "./Navbar";
 const Todotask = () => {
   const [todos, settodos] = useState([]);
   const [task, settask] = useState("");
+  const [completed, setcompleted] = useState(true);
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
-    // let newtodolist = JSON.parse(todolist);
-       let newtodolist = JSON.parse(todolist);
+    let newtodolist = JSON.parse(todolist);
     let newtodolist2 = newtodolist ===  null ? [] : newtodolist
     console.log(newtodolist2);
 
@@ -26,7 +26,7 @@ const Todotask = () => {
   //cheakbox function
   const handlecheak = (id) => {
     let updatedtodo = todos.map((item) =>
-      item.id == id ? { ...item, iscompleted: !item.iscompleted } : item
+      item.id === id ? { ...item, iscompleted: !item.iscompleted } : item
     );
     settodos(updatedtodo);
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
@@ -45,8 +45,16 @@ const Todotask = () => {
     localStorage.setItem("todolist", JSON.stringify(updatedtodo));
     settodos(updatedtodo);
   };
-  //show all function
-
+  // show all function
+  const togglechange = () => {
+    setcompleted(!completed);
+    let todolist = localStorage.getItem("todolist");
+    let newtodos = JSON.parse(todolist);
+    let updatedtodo = completed
+      ? newtodos.filter((item) => item.iscompleted === false)
+      : newtodos;
+    settodos(updatedtodo);
+  };
 
   return (
     <>
@@ -69,7 +77,7 @@ const Todotask = () => {
             <button
               onClick={handleadd}
               disabled={task.length < 2}
-              className="border border-black px-4 py-3  bg-gradient-to-tr from-purple-500 to-violet-500 rounded-xl shadow-md shadow-gray-800"
+              className="border border-black lg:px-4 lg:py-3 px-2 py-1  bg-gradient-to-tr from-yellow-300 to-orange-200 rounded-xl shadow-sm shadow-orange-500"
             >
               Add
             </button>
@@ -78,7 +86,23 @@ const Todotask = () => {
             <h1 className="text-xl px-3 py-2 flex justify-center items-center font-bold">
               Here Your All Task List
             </h1>
-           
+            {todos?.length === 0 ? (
+              <>
+                <h1 className="text-lg px-3 py-2 flex justify-center items-center">
+                  NO Task is pending
+                </h1>
+              </>
+            ) : (
+              <div className="flex justify-start border-b border-black items-center text-xl gap-4 px-2 py-2">
+                <input
+                  type="checkbox"
+                  className="text-5xl"
+                  checked={completed}
+                  onChange={() => togglechange()}
+                />
+                <h1>Show all</h1>
+              </div>
+            )}
             {todos?.map((item) => (
               <div key={item.id} className=" w-[90vw] lg:w-[45vw] ">
                 <div className="flex justify-between px-2 py-2 items-center border-b">
@@ -95,14 +119,14 @@ const Todotask = () => {
                   </div>
                   <div className="flex justify-center items-center gap-2">
                     <button
-                      className=" bg-gradient-to-t from-gray-500 to-gray-300 px-4 py-2 flex justify-center items-center border border-gray-800 rounded-xl shadow-purple-500 shadow-sm"
+                      className="  bg-gradient-to-tr from-yellow-300 to-orange-200 lg:px-4 lg:py-3 px-2 py-1 flex justify-center items-center border border-gray-800 rounded-xl shadow-purple-500 shadow-sm"
                       onClick={() => handleedit(item.id, item.todo)}
                     >
                       Edit
                     </button>
 
                     <button
-                      className=" bg-gradient-to-t from-gray-500 to-gray-300 px-4 py-2 flex justify-center items-center border border-gray-800 rounded-xl shadow-purple-500 shadow-sm"
+                      className="  bg-gradient-to-tr from-yellow-300 to-orange-200 lg:px-4 lg:py-3 px-2 py-1 flex justify-center items-center border border-gray-800 rounded-xl shadow-purple-500 shadow-sm"
                       onClick={() => handledelete(item.id)}
                     >
                       Delete
