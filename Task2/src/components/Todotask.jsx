@@ -7,10 +7,11 @@ const Todotask = () => {
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
     // let newtodolist = JSON.parse(todolist);
-    let newtodolist = JSON.parse(todolist) ;
-    console.log(newtodolist)
-    
-      settodos(newtodolist);
+       let newtodolist = JSON.parse(todolist);
+    let newtodolist2 = newtodolist ===  null ? [] : newtodolist
+    console.log(newtodolist2);
+
+    settodos(newtodolist2);
   }, []);
   //add function
   const handleadd = () => {
