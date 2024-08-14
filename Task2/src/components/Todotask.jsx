@@ -60,7 +60,7 @@ const Todotask = () => {
     <>
       <div className="">
         <div className="flex justify-center items-center flex-col pt-12">
-          <h1 className="text-black text-[2rem] px-9 pt-7 pb-5">
+          <h1 className="text-black lg:text-4xl md:text-3xl text-2xl px-9 pt-7 pb-5">
             Enter Your Task here
           </h1>
           <form
