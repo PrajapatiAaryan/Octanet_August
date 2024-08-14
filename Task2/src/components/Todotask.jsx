@@ -2,9 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 
 const Todotask = () => {
-  const [todos, settodos] = useState([
-    { id: Date.now(), todo: "this is a demo todo task", iscompleted: false },
-  ]);
+  const [todos, settodos] = useState([]);
   const [task, settask] = useState("");
   useEffect(() => {
     let todolist = localStorage.getItem("todolist");
